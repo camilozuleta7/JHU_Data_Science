@@ -1,8 +1,9 @@
 ---
 title: "The Data Scientist’s Toolbox"
 output:
-  pdf_document: default
+  word_document: default
   html_document: default
+  pdf_document: default
 date: '2022-06-16'
 ---
 
@@ -35,6 +36,7 @@ install.packages('name of the package')
 install.packages('ggplot2')
 
 ```
+
 ```{r}
 install.packages('devtools')
 library('devtools')
@@ -111,5 +113,7 @@ The main benefit of using Projects is that it starts the organization process of
 
 Version control is a system that records changes that are made to a file or a set of files over time. As you make edits, the version control system takes snapshots of your files and the changes, and then saves those snapshots so you can refer or revert back to previous versions later if need be! 
 
+# Semana 4
 
-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
+## R markdown 
+
