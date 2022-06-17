@@ -1,0 +1,115 @@
+---
+title: "The Data Scientist’s Toolbox"
+output:
+  pdf_document: default
+  html_document: default
+date: '2022-06-16'
+---
+
+```{r}
+
+```
+
+# Semana 2
+
+## R Packages 
+
+Know your R version, operating system and downloaded packages 
+```{r}
+sessionInfo()
+```
+
+
+https://www.rdocumentation.org/search?q=regression
+
+This a great place to look for R packages in the main repositories 
+
+### How do you install packages?
+
+If you are installing from CRAN use the function:
+
+install.packages('name of the package')
+
+
+```{r}
+install.packages('ggplot2')
+
+```
+```{r}
+install.packages('devtools')
+library('devtools')
+```
+
+
+If you are installing from Bioconductor 
+
+first 
+
+```{r}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(version = "3.15")
+```
+
+To install core packages
+
+```{r}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install()
+```
+
+To install an specific package 
+
+```{r}
+BiocManager::install(c("GenomicFeatures", "AnnotationDbi"))
+```
+
+### Loading a package 
+
+Same with R. You’ve installed it, but now you have to “open” it. For example, to “open” the “ggplot2” package, you would run:
+
+```{r}
+library(ggplot2)
+```
+
+### Check which packages are installed 
+
+```{r}
+installed.packages()
+#or 
+library()
+
+```
+
+### Update packages 
+
+To update all your packages use the next command
+
+```{r}
+update.packages()
+```
+
+### Unloading packages 
+
+use the code as the following example: 
+
+detach("package:ggplot2", unload=TRUE)
+
+```{r}
+install.packages('KernSmooth')
+library(KernSmooth)
+```
+
+## R Projects 
+
+The main benefit of using Projects is that it starts the organization process off right! It creates a folder for you and now you have a place to store all of your input data, your code, and the output of your code. Everything you are working on within a Project is self-contained; which often means finding things is much easier - there’s only one place to look!
+
+# Semana 3 
+
+## What is version control?
+
+Version control is a system that records changes that are made to a file or a set of files over time. As you make edits, the version control system takes snapshots of your files and the changes, and then saves those snapshots so you can refer or revert back to previous versions later if need be! 
+
+
+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
