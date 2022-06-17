@@ -117,3 +117,8 @@ Version control is a system that records changes that are made to a file or a se
 
 ## R markdown 
 
+## Scientific Thinking 
+
+## Big Data 
+
+
