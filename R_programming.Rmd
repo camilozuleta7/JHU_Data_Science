@@ -1,0 +1,248 @@
+---
+title: "R programming"
+output: html_document
+date: '2022-06-18'
+---
+
+# Semana 1 
+
+```{r}
+getwd()
+```
+
+```{r}
+dir()
+```
+
+```{r}
+monda <- matrix(1, nrow = 3, ncol= 3)
+print(monda)
+```
+
+The <- symbol is the assignment operator 
+
+```{r}
+mensaje_mpva <- 'ojalá algun día nos casemos'
+mensaje_mpva # This is called auto-printing 
+print(mensaje_mpva) # This is explicit printing 
+
+```
+
+```{r}
+x <- 1:20
+x
+```
+
+Los numeros entre [] indican la posición del primer objeto a la derecha 
+
+# Data Types 
+
+R has five basic classes of objects: 
+
+- character 
+- numeric (real numbers)
+- integer 
+- complex 
+- logical (True/False)
+
+The most basic object is a vector: contains multiple copies of a single type of objects. So you cannot mix different objects under the same vector 
+
+BUT: the one exception is a *list*, which is represented as a vector put can contain objects of different classes 
+
+Empty vectors can be created:
+
+```{r}
+vector()
+```
+
+## Numbers 
+
+Numbers in R are generally treated a numeric objects (i.e. double precision real numbers)
+
+If you explicitly want an integer, you need to specify the L suffix 
+
+```{r}
+num_entero <- 1L 
+typeof(num_entero)
+num <- 1 
+typeof(num)
+```
+
+## Attributes 
+
+R objects can have attributes
+
+- names, dimnames
+- dimensions 
+- class
+- length 
+
+
+Attributes of an object can be accessed using the attributes( ) function 
+
+```{r}
+attributes(monda)
+```
+
+## Vectors and Lists 
+
+Creating vectors 
+
+The c() function can be used to create vectors of objects 
+
+```{r}
+x <- c(0.5, 0.6) ##numeric
+x <- c(T,F) ##logical
+x <- c('a', 'b', 'c') ##character 
+x <- 9:29 ##numeric or integer?
+typeof(x)
+x <- c(1+0i, 2+4i) ##complex 
+
+```
+
+Si sería un integer 
+
+```{r}
+x <- vector('numeric', length=10)
+x
+```
+
+When different objects are mixed in a vector, coercion occurs so that every element in the vector is of the same class 
+
+```{r}
+y <- c(1.7, 'a')
+y
+```
+
+En este caso el número 1.7 se transformó en una string 
+
+### Explicit Coercion 
+
+Objects can be explicitly coerced fron one class to another usint the as.* function. For example:
+
+```{r}
+x <- 0:7
+typeof(x)
+as.numeric(x)
+as.logical(x)
+as.character(x)
+
+
+```
+
+## Lists 
+
+Lists are a special type of vector that can contain elements of different classes.
+
+```{r}
+x <- list('a', F, 2.65)
+x
+```
+
+## Matrices 
+
+Matrices are vectors with a dimmension attribute 
+
+```{r}
+m <- matrix(1:20,nrow = 4, ncol=5)
+dim(m)
+m
+```
+
+Las matrices se llenan por columnas. Es decir los valores se asignan a la primera columna hasta que alcanza su dimensión y luego empieza a rellenar los valoresde la segunda columna y así. 
+
+También podría añadirle la dimensión al objeto y luego convertirlo en una matriz
+
+```{r}
+m <- 1:20
+m
+dim(m) <- c(4,5)
+m
+```
+
+column binding 
+
+```{r}
+x <- 1:4
+y <-11:14
+
+cbind(x,y)
+
+```
+
+row binding 
+
+```{r}
+x <- 2:4
+y <- 12:14
+rbind(x,y)
+```
+
+## Factors 
+
+Factors are used to represent categorical data. Factors can be unordered or ordered. One can think of a factor as an integer vector where each integer has a label.
+
+Using factors with labels is better than using integers because factors are self-describing; having a variable that has values 'Male' and 'Female' is better tah having a variable that has values 1 and 2.
+
+```{r}
+x <- factor(c('yes', 'yes', 'no', 'no', 'yes'))
+x
+table(x)
+unclass(x)
+```
+
+The order of the levels can be set using the levels argument to facotr().
+
+```{r}
+x <- factor(c('yes', 'yes', 'no', 'no', 'yes'), levels = c('yes', 'no'))
+x
+table(x)
+unclass(x)
+
+```
+
+Lo que hice acá fue cambiar el valor categórico que tiene las observaciones. yes es 1 en vez de ser 2. 
+
+## Msiing Values 
+
+Missing values are denoted by NA or NaN for undefined mathmatical operations 
+
+is.na() is used to test objects if they are NA 
+
+is.nan() is ued to test for NaN 
+
+NA values have a class also.
+
+A NaN value is also NA but the converse is not true 
+
+```{r}
+x <- c(1,2,NA,10,3)
+is.na(x)
+is.nan(x)
+
+```
+
+```{r}
+x<- c(1,2, NaN, NA, 4)
+is.na(x)
+is.nan(x)
+
+```
+
+## Data Frames 
+
+Special type of list where very element of the list has to have the same length 
+
+They can also store different types of objects 
+
+```{r}
+data.matrix(m)
+
+```
+
+
+```{r}
+d <- data.frame(foo = 1:4, bar = c(T,T,F,F))
+d
+```
+
