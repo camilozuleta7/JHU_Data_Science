@@ -4,7 +4,7 @@ output: html_document
 date: '2022-06-18'
 ---
 
-# Semana 1 
+# Semana 1
 
 ```{r}
 getwd()
@@ -19,7 +19,7 @@ monda <- matrix(1, nrow = 3, ncol= 3)
 print(monda)
 ```
 
-The <- symbol is the assignment operator 
+The \<- symbol is the assignment operator
 
 ```{r}
 mensaje_mpva <- 'ojalá algun día nos casemos'
@@ -33,21 +33,21 @@ x <- 1:20
 x
 ```
 
-Los numeros entre [] indican la posición del primer objeto a la derecha 
+Los numeros entre [] indican la posición del primer objeto a la derecha
 
-# Data Types 
+# Data Types
 
-R has five basic classes of objects: 
+R has five basic classes of objects:
 
-- character 
-- numeric (real numbers)
-- integer 
-- complex 
-- logical (True/False)
+-   character
+-   numeric (real numbers)
+-   integer
+-   complex
+-   logical (True/False)
 
-The most basic object is a vector: contains multiple copies of a single type of objects. So you cannot mix different objects under the same vector 
+The most basic object is a vector: contains multiple copies of a single type of objects. So you cannot mix different objects under the same vector
 
-BUT: the one exception is a *list*, which is represented as a vector put can contain objects of different classes 
+BUT: the one exception is a *list*, which is represented as a vector put can contain objects of different classes
 
 Empty vectors can be created:
 
@@ -55,11 +55,11 @@ Empty vectors can be created:
 vector()
 ```
 
-## Numbers 
+## Numbers
 
 Numbers in R are generally treated a numeric objects (i.e. double precision real numbers)
 
-If you explicitly want an integer, you need to specify the L suffix 
+If you explicitly want an integer, you need to specify the L suffix
 
 ```{r}
 num_entero <- 1L 
@@ -68,27 +68,26 @@ num <- 1
 typeof(num)
 ```
 
-## Attributes 
+## Attributes
 
 R objects can have attributes
 
-- names, dimnames
-- dimensions 
-- class
-- length 
+-   names, dimnames
+-   dimensions
+-   class
+-   length
 
-
-Attributes of an object can be accessed using the attributes( ) function 
+Attributes of an object can be accessed using the attributes( ) function
 
 ```{r}
 attributes(monda)
 ```
 
-## Vectors and Lists 
+## Vectors and Lists
 
-Creating vectors 
+Creating vectors
 
-The c() function can be used to create vectors of objects 
+The c() function can be used to create vectors of objects
 
 ```{r}
 x <- c(0.5, 0.6) ##numeric
@@ -100,25 +99,25 @@ x <- c(1+0i, 2+4i) ##complex
 
 ```
 
-Si sería un integer 
+Si sería un integer
 
 ```{r}
 x <- vector('numeric', length=10)
 x
 ```
 
-When different objects are mixed in a vector, coercion occurs so that every element in the vector is of the same class 
+When different objects are mixed in a vector, coercion occurs so that every element in the vector is of the same class
 
 ```{r}
 y <- c(1.7, 'a')
 y
 ```
 
-En este caso el número 1.7 se transformó en una string 
+En este caso el número 1.7 se transformó en una string
 
-### Explicit Coercion 
+### Explicit Coercion
 
-Objects can be explicitly coerced fron one class to another usint the as.* function. For example:
+Objects can be explicitly coerced fron one class to another usint the as.\* function. For example:
 
 ```{r}
 x <- 0:7
@@ -130,7 +129,7 @@ as.character(x)
 
 ```
 
-## Lists 
+## Lists
 
 Lists are a special type of vector that can contain elements of different classes.
 
@@ -139,9 +138,9 @@ x <- list('a', F, 2.65)
 x
 ```
 
-## Matrices 
+## Matrices
 
-Matrices are vectors with a dimmension attribute 
+Matrices are vectors with a dimmension attribute
 
 ```{r}
 m <- matrix(1:20,nrow = 4, ncol=5)
@@ -149,7 +148,7 @@ dim(m)
 m
 ```
 
-Las matrices se llenan por columnas. Es decir los valores se asignan a la primera columna hasta que alcanza su dimensión y luego empieza a rellenar los valoresde la segunda columna y así. 
+Las matrices se llenan por columnas. Es decir los valores se asignan a la primera columna hasta que alcanza su dimensión y luego empieza a rellenar los valoresde la segunda columna y así.
 
 También podría añadirle la dimensión al objeto y luego convertirlo en una matriz
 
@@ -160,7 +159,7 @@ dim(m) <- c(4,5)
 m
 ```
 
-column binding 
+column binding
 
 ```{r}
 x <- 1:4
@@ -170,7 +169,7 @@ cbind(x,y)
 
 ```
 
-row binding 
+row binding
 
 ```{r}
 x <- 2:4
@@ -178,7 +177,7 @@ y <- 12:14
 rbind(x,y)
 ```
 
-## Factors 
+## Factors
 
 Factors are used to represent categorical data. Factors can be unordered or ordered. One can think of a factor as an integer vector where each integer has a label.
 
@@ -201,19 +200,19 @@ unclass(x)
 
 ```
 
-Lo que hice acá fue cambiar el valor categórico que tiene las observaciones. yes es 1 en vez de ser 2. 
+Lo que hice acá fue cambiar el valor categórico que tiene las observaciones. yes es 1 en vez de ser 2.
 
-## Msiing Values 
+## Msiing Values
 
-Missing values are denoted by NA or NaN for undefined mathmatical operations 
+Missing values are denoted by NA or NaN for undefined mathmatical operations
 
-is.na() is used to test objects if they are NA 
+is.na() is used to test objects if they are NA
 
-is.nan() is ued to test for NaN 
+is.nan() is ued to test for NaN
 
 NA values have a class also.
 
-A NaN value is also NA but the converse is not true 
+A NaN value is also NA but the converse is not true
 
 ```{r}
 x <- c(1,2,NA,10,3)
@@ -229,20 +228,293 @@ is.nan(x)
 
 ```
 
-## Data Frames 
+## Data Frames
 
-Special type of list where very element of the list has to have the same length 
+Special type of list where very element of the list has to have the same length
 
-They can also store different types of objects 
+They can also store different types of objects
 
 ```{r}
 data.matrix(m)
 
 ```
 
-
 ```{r}
 d <- data.frame(foo = 1:4, bar = c(T,T,F,F))
 d
 ```
+
+## Reading Data
+
+There are a few principal functions reading data into R
+
+-   `read.table`, `read.csv`, for reading tabular data
+
+-   `readLines` for reading lines of a text file
+
+-   `source`, for reading R in code files (inverse of dump)
+
+-   `dget`, for reading in R code files
+
+-   `load` for reading in saved workspaces
+
+-   `unserialize` for reading single R objects in binary form
+
+### read.table
+
+The `read.table` function is one of the most commonly used functions for reading data. It has a few important arguments:
+
+-   file; the name of a file or a connection
+
+-   header; logical indicating if the file has a header line
+
+-   sep; a string indicating how the colums are separating
+
+-   colClasses; a character vector indicating the class of each column in the dataset
+
+-   nrows; the number of rows in the dataset
+
+-   comment,char; a character string indicating the comment character
+
+-   skip; the numebr of lines to skip from the beginning
+
+-   stringAsFactors; should character be coded as factors?
+
+### Reading Larger Datasets with read.table
+
+## Textual Formats
+
+- `dumping` and `dputing` are useful because the resulting textual format is edit-able and in the case of corruption, potenntially recoverable 
+
+### d-put
+
+dput function reconstructs an r object 
+
+
+```{r}
+df <- data.frame(a= 1, b='a')
+dput(df)
+```
+En el siguiente chunk lo mandaré a un archivo y después lo voy a leer
+
+```{r}
+dput(df, file= 'y.R')
+new.df <- dget('y.R')
+new.df
+```
+
+### dump
+
+multiple objecs can be deparsed usint the dump fucntiona nd read back in using `source`
+
+```{r}
+x <- 'foo'
+y <- data.frame(a= 1, b= 'a')
+dump(c('x','y'), file = 'data.R')
+rm(x,y)
+source('data.R')
+y
+x
+```
+
+## Connections: Interfaces to the outside world 
+
+Data are read in suing ´*connection* interfaces. Connections can be made to files (most common) or to more exotic things 
+
+- `file`; opens a connection to a file
+- `gzfile`; opnes a connection to a file compressed eith gzip 
+- `url`; opens a connection to a webpage 
+
+
+## Subsetting 
+
+There a number of operators that can be used to extract subsets of R objects 
+
+- [ always returns an object of the same class as the original; cna be used to select more than one element 
+
+- [[ is used to extract elements of a list or a data frame; it can only be used to extract a single element and the class of the returned object will not necessarily be a list or a data frame 
+
+- $ is used to extract elements of a list or data frame by name; semantics are similar to that of [[
+
+Example 
+
+
+
+```{r}
+
+x <- c('a', 'b', 'c', 'd', 'd', 'd', 'c')
+x[1]
+x[2]
+x[1:4]
+```
+
+```{r}
+# logical subsetting 
+x[x>'a']
+# create a logical vector by subsetting 
+u <- x>'a'
+u
+```
+
+### Subsetting - lists 
+
+```{r}
+x <- list(foo= 1:4, bar = 0.6)
+x[1]
+
+x[[1]]
+
+x$bar
+# estoy utilizando el nombre para extraer el elemento 
+
+x[['bar']]
+x['bar']
+```
+
+```{r}
+x <- list(foo= 1:4, novia= 'mpva', cancion = 'locos', fecha= 11)
+
+i <-x[c(1:4)]
+i$novia
+```
+```{r}
+
+```
+
+### Subsetting Nested Elements of a list 
+
+The [[ can take an integer sequence 
+
+
+```{r}
+x <- list( a= list(1,2,3,4), b= list(7,6,5,4), c= list(0,9,8,7))
+
+# Existen dos formas de extraer elementos que se están anidados dentro de mpas de un objeto 
+
+# La primera forma es:
+x[[2]][[3]]
+
+# La segunda forma es 
+
+x[[c(3,4)]]
+```
+
+### Subsetting - Matrices 
+
+```{r}
+matriz <- matrix(1:8, 4,2)
+matriz
+# El siguiente comando extrae el elemento ubicado en la tercera fila y en la segunda columna 
+matriz[3,2]
+
+# El siguiente comando extrae los primeros 6 elementos de la matriz. Recordar que estas se enumeran por columna 
+matriz[1:6]
+
+matriz[1,] #primera fila
+matriz[,2] #segunda columna 
+```
+By default, when a single element of a matrix is retrieved, it is returned as a vector of length 1 rather than a 1x1 matrix. This behavior can be turned off by setting drop =FALSE 
+
+```{r}
+matriz[2,2, drop = FALSE]
+```
+
+```{r}
+matriz[,2, drop = F]
+```
+
+### Subsetting - partial matching 
+
+Partial matching of names is allowed with [[ and $
+
+El $ hace partial matching del elemento que más se parezca 
+
+```{r}
+x <- list(aafuera = 1:6)
+x$a
+
+```
+```{r}
+X[['a']]
+```
+
+```{r}
+x[['a', exact = FALSE]]
+```
+
+### Subsetting - removing missing values
+
+```{r}
+x <- c(1,2, NA, 4, NA, 5, 'k', 'p')
+bad <- is.na(x)
+bad
+x[!bad]
+```
+
+```{r}
+y <- c('b', 'c', 1, 6, 'f', 'NA', NA, NA)
+
+good <- complete.cases(x,y)
+
+x[good]
+y[good]
+```
+
+```{r}
+airquality[1:6,1:4]
+
+good <- complete.cases(airquality)
+airquality[good, ][1:6,1:4]
+```
+
+## Vectorized operations 
+
+Many operations in R are vectorized making code more efficient, concise, and easier to read 
+```{r}
+x <- 1:4; y <- 7:8
+
+x + y
+```
+
+```{r}
+x <- 4
+class(x)
+x <-c(4, 'a', T)
+class(x)
+x<- c(1,3,5)
+y <-c (3,2,10)
+x <- list(2, 'a', 'b', T)
+class(x[[1]])
+x <- c(76:80)
+u <- x[x==4]>78
+u
+```
+
+```{r}
+g <- read.csv('hw1_data.csv')
+g
+nrow(g)
+tail(g, 2)
+g[47, 1]
+
+ozone <- g[,1]
+ozone
+
+good <- complete.cases(ozone)
+ozgood <- ozone[good]
+ozgood <- list(ozgood)
+
+sapply(ozgood, mean)
+ozgood
+
+
+df <- as.data.frame(g)
+df2 <- subset(df, Ozone >31 & Temp > 90)
+m <- mean(df2$Solar.R)
+m<- subset(df,Month ==5)
+m
+mm <- max(m$Ozone)
+mm
+```
+
 
